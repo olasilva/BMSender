@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Send Bulk Emails</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('index') }}">
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Email Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Email Body</label>
+                        <textarea class="form-control" id="body" name="body" rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="recipients" class="form-label">Recipients (comma-separated emails)</label>
+                        <textarea class="form-control" id="recipients" name="recipients" rows="4" required 
+                                  placeholder="Enter email addresses separated by commas"></textarea>
+                        <div class="form-text">Maximum {{ config.MAX_EMAILS }} emails allowed per batch</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Emails</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
